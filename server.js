@@ -18,5 +18,6 @@ app.use(errorHandler);
 await connectToMongoDB();
 
 app.listen(port, () => {
+  console.log("hello sarthak");
   console.log(`Server is running on http://localhost:${port}`);
 });
