@@ -3,6 +3,11 @@ import mongoose from "mongoose";
 // Define the POC Schema
 const pocSchema = new mongoose.Schema(
   {
+    interactions: [
+          {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Interaction",
+          }],
     restaurantId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Lead",

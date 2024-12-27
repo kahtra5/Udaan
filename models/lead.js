@@ -10,6 +10,11 @@ const leadSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    KamId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "KAM",
+      required: true,
+  },
     address: {
       type: String,
       required: true,
@@ -21,7 +26,7 @@ const leadSchema = new mongoose.Schema(
     },
     leadStatus: {
       type: String,
-      enum: ["NEW", "CONTACTED", "INTERESTED", "NOT INTERESTED", "CONVERTED"],
+      enum: ["NEW", "CONTACTED", "NOT INTERESTED", "CONVERTED"],
       default: "NEW",
     },
     callFrequency: {
@@ -43,7 +48,7 @@ const leadSchema = new mongoose.Schema(
         ref: "Interaction",
       },
     ],
-    lastCallDate: {
+    lastContactedDate: {
       type: Date,
       required: isContacted,
     },

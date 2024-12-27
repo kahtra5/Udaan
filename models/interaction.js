@@ -2,17 +2,17 @@ import mongoose from "mongoose";
 
 const interactionSchema = new mongoose.Schema(
   {
-    restaurant: {
+    restaurantId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Lead",
       required: true,
     },
-    contactedPOC: {
+    contactedPOCId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "POC",
       required: true,
     },
-    type: {
+    interactionType: {
       type: String,
       enum: ["call", "email", "visit"],
       required: true,
@@ -25,7 +25,11 @@ const interactionSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-  },
+    orderValue: {
+      type: Number,
+      required: true,
+      default: 0,
+   },},
   { timestamps: true }
 );
 
