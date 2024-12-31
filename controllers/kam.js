@@ -2,6 +2,9 @@ import { Kam } from '../models/index.js';
 import { generateToken } from '../utils/jwt.js'; // Make sure the path is correct
 import bcrypt from 'bcryptjs';
 
+
+
+//signup
 export const signup = async (req, res, next) => {
     try {
         console.log(req.body);
@@ -33,6 +36,8 @@ export const signup = async (req, res, next) => {
     }
 };
 
+
+//login
 export const login = async (req, res) => {
     try {
         const { username, password } = req.body;

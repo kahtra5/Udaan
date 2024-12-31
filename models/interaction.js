@@ -25,7 +25,7 @@ const interactionSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    orderValue: {
+    order: {
       type: Number,
       required: true,
       default: 0,

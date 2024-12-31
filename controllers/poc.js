@@ -29,3 +29,13 @@ export const createPoc = async (req, res, next) => {
       next(error);
     }
   };
+
+//get all pocs for a restaurant id make it post request
+export const getAllPocs = async (req, res) => {
+    try {
+      const pocs = await Poc.find({restaurantId: req.body.restaurantId});
+      res.status(200).json(pocs);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch pocs", error });
+    }
+  };

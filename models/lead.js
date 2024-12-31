@@ -14,7 +14,7 @@ const leadSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "KAM",
       required: true,
-  },
+    },
     address: {
       type: String,
       required: true,
@@ -23,6 +23,11 @@ const leadSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+    },
+    phoneNumber: {
+      type: String,
+      required: true,
+      match: [/^\d{10}$/, "Phone number must be a 10 digit number"], // Basic phone number validation
     },
     leadStatus: {
       type: String,
@@ -34,7 +39,6 @@ const leadSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    // This is the relationship between the Lead and the POC
     pointOfContacts: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -52,6 +56,10 @@ const leadSchema = new mongoose.Schema(
       type: Date,
       required: isContacted,
     },
+    order: {
+      type: Number,
+      default: 0 // Default value set to 0
+    }
   },
   { timestamps: true }
 );

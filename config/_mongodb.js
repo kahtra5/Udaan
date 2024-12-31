@@ -1,22 +1,13 @@
 import mongoose from "mongoose";
-
-const MONGO_URI =
-  process.env.NODE_ENV === "production"
-    ? process.env.MONGODB_URI
-    : "mongodb://127.0.0.1:27017/restaurant-lead-tracker";
-
-const dbOptions = {
-  autoCreate: true,
-};
-
 export const connectToMongoDB = async () => {
   try {
-    mongoose.set("strictQuery", false);
-    await mongoose.connect(MONGO_URI, dbOptions);
-    console.info("MongoDB connected");
-  } catch (e) {
-    console.error(e.message);
-    console.info("MongoDB connection error");
-    process.exit(-1);
+    const conn = await mongoose.connect(process.env.MONGODB_URI,  {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (err) {
+    console.error(`Error: ${err.message}`);
+    process.exit(1); // Exit process if MongoDB connection fails
   }
 };

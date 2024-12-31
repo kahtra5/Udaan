@@ -5,13 +5,16 @@ import { authenticateToken } from "../middleware/authenticateToken.js";
 const router = express.Router();
 
 // Lead routes
-router.post("/leads",authenticateToken,lead.createLead);
-router.get("/leads" , authenticateToken, lead.getAllLeads);
-router.post('/poc',authenticateToken, poc.createPoc);
-router.post('/interaction',authenticateToken, interaction.createInteraction);
+router.post("/addleads",authenticateToken,lead.createLead);
+router.get("/getleads" , authenticateToken, lead.getAllLeads);
+router.post('/addpoc',authenticateToken, poc.createPoc);
+router.post('/addinteraction',authenticateToken, interaction.createInteraction);
 router.get('/leads/today', authenticateToken, lead.getLeadsToBeCalledToday);
-router.post('/kam', kam.signup);
+router.get('/leads/top', authenticateToken, lead.getTopPerformingRestaurants);
+router.post('/getpocs', poc.getAllPocs);
+router.post('/signup', kam.signup);
 router.post('/login', kam.login);
+router.post('/getinteractions', authenticateToken, interaction.getInteractionsByRestaurantId);
 
 // router.get("/leads/:id", leadController.getLeadById);
 // router.patch("/leads/:id", leadController.updateLead);
